@@ -7,6 +7,9 @@ let currentElement = null;
 const btnGetInfo = document.getElementById("btnGetInfo");
 const mainContainer = document.getElementById("container");
 
+/* 
+  Calling the API
+*/
 btnGetInfo.addEventListener("click", () => {
   callingData().then((res) => {
     allSamples = res;
@@ -15,6 +18,9 @@ btnGetInfo.addEventListener("click", () => {
   });
 });
 
+/* 
+  Display information from back  
+*/
 function drawInfo(clientName) {
   mainContainer.innerHTML = "";
   mainContainer.classList.replace("container", "newClass");
@@ -46,6 +52,9 @@ function drawInfo(clientName) {
   listenItems();
 }
 
+/*
+  Listen all li items and call getElementClicked function
+*/
 function listenItems() {
   const elements = document.querySelectorAll("li");
 
@@ -57,6 +66,9 @@ function listenItems() {
   }
 }
 
+/* 
+  Get the element was clicked and find it its index to asign it to infoSamples, and call displayInfoSample to display the card with the information.
+*/
 function getElementClicked() {
   let infoSample;
   const samples = allSamples.results;
@@ -70,8 +82,10 @@ function getElementClicked() {
   return displayInfoSample(infoSample);
 }
 
+/* 
+  Delete every card showd. Create the elements to display and this to the DOM. As weel asign an event to the close button. 
+*/
 function displayInfoSample(infoToDisplay) {
-  console.log("ELEME:", currentElement);
   if (currentElement) {
     deleteElement();
   }
@@ -82,9 +96,13 @@ function displayInfoSample(infoToDisplay) {
   const data = `
     <div onclick="event.stopPropagation()" class="dropdown-content">
       <div class="close" id="close"><span>X</span></div>
-      <p><b>Name:</b>${infoToDisplay.name}</p>
-      <p><b>Date:</b>${infoToDisplay.date}</p>
-      <p><b>Parcel Number:</b>${infoToDisplay.parcel_id}</p>
+      <p><span>Name:</span>${infoToDisplay.name}</p>
+      <p><span>Date:</span>${infoToDisplay.date}</p>
+      <p><span>Sample Type ID:</span>${infoToDisplay.sampletype_id}</p>
+      <p><span>variety:</span>${infoToDisplay.variety}</p>
+      <p><span>Num Stage:</span>${infoToDisplay.analysis_status.num_stages}</p>
+      <p><span>Stage IDX:</span>${infoToDisplay.analysis_status.stage_idx}</p>
+      <p><span>Stasge Code: </span>${infoToDisplay.analysis_status.stage_code}</p>
     </div>
   `;
   boxData.insertAdjacentHTML("beforeend", data);
@@ -92,9 +110,12 @@ function displayInfoSample(infoToDisplay) {
 
   document.getElementById("close").addEventListener("click", () => {
     deleteElement();
-    console.log("SEGUNDA");
   });
 }
+
+/* 
+  Delete cards when it is triguer opening another card or clicking on the close button
+*/
 
 function deleteElement() {
   currentElement.removeChild(currentElement.firstElementChild);

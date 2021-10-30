@@ -1,29 +1,73 @@
+body {
+  background: hsl(60, 97%, 46%);
+  z-index: 0;
+}
+
 .container {
   width: 100vw;
   height: 100vh;
-  background-color: yellowgreen;
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 }
 
 .btn {
   height: fit-content;
 }
 
+/* CSS */
+.btn {
+  align-items: center;
+  background-color: #fa6400;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: rgba(0, 0, 0, 0.02) 0 1px 3px 0;
+  color: #fff;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: system-ui, -apple-system, system-ui, "Helvetica Neue", Helvetica,
+    Arial, sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  justify-content: center;
+  line-height: 1.25;
+  margin: 0;
+  min-height: 3rem;
+  padding: calc(0.875rem - 1px) calc(1.5rem - 1px);
+  margin-right: 1rem;
+  margin-left: 1rem;
+}
+
+.btn:hover,
+.btn:focus {
+  background-color: #fb8332;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 4px 12px;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  background-color: #c85000;
+  box-shadow: rgba(0, 0, 0, 0.06) 0 2px 4px;
+  transform: translateY(0);
+}
+
 .newClass {
   display: flex;
   flex-wrap: wrap;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   align-items: center;
+  padding-top: 1rem;
 }
 
 .boxTitle {
   display: flex;
   justify-content: center;
   flex-basis: 100%;
-  background-color: tomato;
 }
 .boxTitle > h1 {
   font-size: 5rem;
@@ -34,7 +78,7 @@
   flex-wrap: wrap;
   max-width: 1200px;
   gap: 2px;
-  padding: 1rem;
+  padding: 0 1rem;
 }
 
 .sample {
@@ -42,26 +86,29 @@
   flex-grow: 1;
   text-align: center;
   border: 1px solid black;
-  color: rgb(0, 0, 0);
+  color: white;
   font-size: 1.2rem;
   font-weight: bold;
   padding-top: 1rem;
   padding-bottom: 1rem;
-  background-color: rgb(158, 255, 60);
+  background: linear-gradient(85deg, #434343, #262626);
 }
 
 .sample:hover {
-  background-color: white;
-  font-size: 1.5rem;
+  background: linear-gradient(-85deg, #434343, #262626);
+  color: yellow;
 }
 
 .close {
   display: block;
   width: 100%;
-  padding-bottom: 0.5rem;
-  padding-top: 0.5rem;
-  margin-block-end: 0.5rem;
-  border-bottom: solid 1px rgba(192, 192, 192, 0.1);
+  text-align: right;
+  color: rgb(255, 255, 255);
+  font-size: 1.2rem;
+  padding-bottom: 0.2rem;
+  padding-top: 0.2rem;
+  margin-block-end: 0.2rem;
+  border-bottom: solid 1px rgba(192, 192, 192, 0.5);
 }
 
 .dropdown {
@@ -71,24 +118,23 @@
 
 .dropdown-content {
   position: absolute;
-  background-color: white;
-  min-width: 20%;
-  overflow: auto;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background: linear-gradient(85deg, #434343, #262626);
+  border-radius: 5px;
   z-index: 1;
-  margin-bottom: 5rem;
+  animation: fadeIn 0.3s linear;
 }
 
 .dropdown-content p {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
   padding-bottom: 0.5rem;
-  color: black;
+  color: hsl(24, 100%, 50%);
   text-align: left;
+  font-size: calc(1rem + 1px);
 }
 
-.dropdown b {
-  background-color: yellowgreen;
+span {
+  margin-right: 0.5rem;
 }
 
 @keyframes fadeIn {
@@ -96,6 +142,6 @@
     opacity: 0;
   }
   to {
-    opacity: 1;
+    opacity: 0.9;
   }
 }
